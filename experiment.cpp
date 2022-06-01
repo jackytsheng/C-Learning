@@ -1,46 +1,35 @@
-
-#include <cstdlib>	// general purpose
-#include <iostream> // read and write data
-#include <string>		// work with strin
-#include <limits>		// work with max and min
-#include <vector>		// work with vector
-#include <sstream>	// string stream
-#include <numeric>	// sequence of value
-#include <ctime>		// work with time
-#include <cmath>		// work with math
-#include <cstring>
-
-// replace std::cout with std
-using namespace std;
-
-// argc : Number of arguments passed
-// argv : Array pointers to strings
-int main(int argc, char **argv)
+class Solution
 {
-	// Basic 10-element integer array.
-	int x[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int a = 12;
-	int &b = a;
-	int *c = &b;
-
-	cout << &a << endl;
-	cout << b << endl;
-	cout << &b << endl;
-
-	cout << c << endl;
-	// Range-based for loop to iterate through the array.
-	for (auto &y : x)
-	{ // Access by value using a copy declared as a specific type.
-		// Not preferred.
-
-		y = 1;
-		cout << y << " ";
-	}
-	cout << endl;
-	for (auto y2 : x)
+public:
+	string longestCommonPrefix(vector<string> &strs)
 	{
+		string common = "";
+		int count = 1;
+		while (count <= strs[0].length())
+		{
+			string current = strs[0].substr(0, count);
 
-		cout << y2;
+			int j = 1;
+			while (j < strs.size())
+			{
+				if (strs[j].find(current) != 0)
+				{
+					break;
+				}
+				j++;
+			}
+
+			if (j == strs.size())
+			{
+				common = current;
+			}
+			else
+			{
+				break;
+			}
+			count++;
+		}
+
+		return common;
 	}
-	cout << endl;
 };
