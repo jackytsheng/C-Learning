@@ -1,12 +1,4 @@
-#include <cstdlib>	// general purpose
 #include <iostream> // read and write data
-#include <string>		// work with strin
-#include <limits>		// work with max and min
-#include <vector>		// work with vector
-#include <sstream>	// string stream
-#include <numeric>	// sequence of value
-#include <ctime>		// work with time
-#include <cmath>		// work with math
 
 using namespace std;
 
