@@ -142,6 +142,47 @@ public:
 		}
 	}
 
+	// 6. delete node in between a key
+	void deleteNode(int key)
+	{
+		if (getNode(key) == NULL)
+		{
+			cout << "Node doesn't exist" << endl;
+		}
+		else
+		{
+			IntNode *nodeAtKey = getNode(key);
+			if (nodeAtKey->prev != NULL)
+			{
+				nodeAtKey->prev->next = nodeAtKey->next;
+			}
+			else
+			{
+				head = nodeAtKey->next;
+			}
+			if (nodeAtKey->next != NULL)
+			{
+				nodeAtKey->next->prev = nodeAtKey->prev;
+			}
+			cout << "Node at key " << key << " is deleted" << endl;
+		}
+	}
+
+	// 7. updating key with new value
+	void update(int key, int val)
+	{
+		if (getNode(key) == NULL)
+		{
+			cout << "Node doesn't exist" << endl;
+		}
+		else
+		{
+			IntNode *nodeAtKey = getNode(key);
+			nodeAtKey->val = val;
+			cout << "Node at key " << key << " is updated to " << val << endl;
+		}
+	}
+
 	void print()
 	{
 		cout << "[";
@@ -206,4 +247,20 @@ int main()
 	cout << "before insert" << endl;
 	dl2.insert(&n5, 6);
 	dl2.print();
+
+	cout << "--- Delete ---" << endl;
+	dl2.print();
+	dl2.deleteNode(4);
+	dl2.print();
+	dl2.deleteNode(5);
+	dl2.print();
+	dl2.deleteNode(3);
+	dl2.print();
+	dl2.deleteNode(6);
+	dl2.print();
+
+	cout << "--- Update ---" << endl;
+	dl.print();
+	dl.update(1, 10);
+	dl.print();
 }
